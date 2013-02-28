@@ -1,12 +1,12 @@
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Hello</th>
+      <th ng-repeat="header in headers">{{ header }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Hello, World</td>
+    <tr ng-repeat="row in data">
+      <td ng-repeat="column in columns">{{ row[column] }}</td>
     </tr>
   </tbody>
 </table>
