@@ -1,4 +1,18 @@
 <div class="hero-unit">
   <h2>Teams</h2>
 
+  <ul class="list-wide">
+    <li ng-repeat="team in teams">
+      {{team}} <button class="btn btn-mini btn-danger" ng-click="deleteTeam(team)" title="Delete Team">⨯</a>
+    </li>
+  </ul>
+
+  <form ng-submit="addTeam(newTeam); newTeam = '';">
+    <fieldset>
+      <legend>Add New Team</legend>
+      <input type="text" ng-model="newTeam" placeholder="Team Name" autofocus>
+      <button class="btn btn-inline" type="submit">Add Team</button>
+    </fieldset>
+  </form>
+
 </div>
