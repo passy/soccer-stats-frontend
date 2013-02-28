@@ -10,6 +10,7 @@
         goalsAway: 5
       }];
 
+      // Very expensive and unnecessary. Should be lazily generated.
       $scope.$watch('results', function (value) {
         value.map(function (item) {
           item.goalsFormatted = String(item.goalsHome) + ':' + item.goalsAway;
@@ -27,21 +28,15 @@
 
       $scope.gridOptions = {
         data: 'results',
-        displayFooter: false,
-        displaySelectionCheckbox: false,
-        enableCellSelection: true,
         columnDefs: [{
           displayName: 'Home Team',
-          field: 'teamHome',
-          enableFocusedCellEdit: true
+          field: 'teamHome'
         }, {
           displayName: 'Away Team',
-          field: 'teamAway',
-          enableFocusedCellEdit: true
+          field: 'teamAway'
         }, {
           displayName: 'Score',
-          field: 'goalsFormatted',
-          enableFocusedCellEdit: true
+          field: 'goalsFormatted'
         }]
       };
 

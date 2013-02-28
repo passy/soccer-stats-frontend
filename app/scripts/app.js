@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('soccerApp', ['ngGrid'])
+  angular.module('soccerApp', [])
     .config(function ($routeProvider) {
       $routeProvider.when('/', {
         templateUrl: 'views/main.html',
