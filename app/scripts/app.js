@@ -1,13 +1,18 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('soccerStatsFrontendApp', [])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    angular.module('soccerApp', [])
+        .config(function ($routeProvider) {
+            $routeProvider.when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/teams', {
+                templateUrl: 'views/teams.html',
+                controller: 'TeamsCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+        });
+}());

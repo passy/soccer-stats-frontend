@@ -1,10 +1,8 @@
-'use strict';
+(function () {
+    'use strict';
 
-angular.module('soccerStatsFrontendApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Testacular'
-    ];
-  });
+    angular.module('soccerApp')
+        .controller('MainCtrl', function ($scope) {
+            $scope.hello = 'world';
+        });
+}());
