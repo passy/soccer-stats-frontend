@@ -25,21 +25,11 @@
           <a href="/" class="brand">⚽ Soccer Predictor</a>
           <nav role="navigation">
             <ul class="nav">
-              <li class="active">
-                <a href="#/">Start</a>
-              </li>
-              <li>
-                <a href="#/teams">Teams</a>
-              </li>
-              <li>
-                <a href="#/results">Results</a>
-              </li>
-              <li>
-                <a href="#/strength">Strength</a>
-              </li>
-              <li>
-                <a href="#/predict">Prediction</a>
-              </li>
+              <passy-menu href="/">Start</passy-menu>
+              <passy-menu href="/teams">Teams</passy-menu>
+              <passy-menu href="/results">Results</passy-menu>
+              <passy-menu href="/strength">Strength</passy-menu>
+              <passy-menu href="/Prediction">Strength</passy-menu>
             </ul>
           </nav>
         </div>
@@ -56,6 +46,7 @@
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/directives/passy_grid.js"></script>
+    <script src="scripts/directives/passy_menu.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/teams.js"></script>
     <script src="scripts/services/app_storage.js"></script>
