@@ -2,14 +2,12 @@
   <span class="content" ng-hide="editMode">{{ content }}</span>
   <form class="form-inline" ng-submit="editMode = false" ng-show="editMode">
     <ng-switch on="options.type">
-      <div ng-switch-when="select">
-        <select ng-model="$parent.content">
-          <option value="{{ option }}" ng-selected="$parent.content == option"
-            ng-repeat="option in options.options">{{ option }}</option>
-        </select>
-        <button class="btn btn-success" ng-click="editMode = false">✓</button>
-      </div>
+      <select ng-model="$parent.content" ng-switch-when="select">
+        <option value="{{ option }}" ng-selected="$parent.content == option"
+          ng-repeat="option in options.options">{{ option }}</option>
+      </select>
       <input ng-switch-default type="text" ng-model="$parent.content">
     </ng-switch>
+    <button class="btn btn-success" ng-click="editMode = false">✓</button>
   </form>
 </div>
