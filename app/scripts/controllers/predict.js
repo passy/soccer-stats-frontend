@@ -5,6 +5,10 @@
     .controller('PredictCtrl', function ($scope, appStorage) {
       $scope.scores = appStorage.getScores();
 
+      $scope.$watch('scores', function () {
+        $scope.loaded = Object.keys($scope.scores).length;
+      });
+
       var teamChanged = function () {
         var scoreA = $scope.scores[$scope.teamA],
           scoreB = $scope.scores[$scope.teamB];

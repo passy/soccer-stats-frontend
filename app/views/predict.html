@@ -3,12 +3,12 @@
 
   <p>Predict future games based on the calculated scores.</p>
 
-  <section class="alert" ng-hide="scores">
+  <section class="alert" ng-hide="loaded">
     You need to calculate scores first. Go to <a href="#/strength">Strength</a>
     to do so.
   </section>
 
-  <section ng-show="scores">
+  <section ng-show="loaded">
     <h3>Select Teams</h3>
     <select ng-model="teamA">
       <option ng-repeat="(team, score) in scores">{{ team }}</option>
@@ -21,8 +21,9 @@
 
   <section ng-show="result" class="well">
     <p>
-      <strong>{{ winner }}</strong> is going to win with an advance of
-      <strong>{{ resultDiff }}</strong> goals.
+      <strong>{{ winner }}</strong> is going to win with a margin of
+      <strong>{{ resultDiff }}</strong>
+      <ng-pluralize count="resultDiff" when="{one: 'goal', 'other': 'goals'}">.
     </p>
 
     <small>Exact result: {{ result }}</small>
