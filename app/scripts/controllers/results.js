@@ -30,7 +30,11 @@
         data: 'results',
         columnDefs: [{
           displayName: 'Home Team',
-          field: 'teamHome'
+          field: 'teamHome',
+          editOptions: {
+            type: 'select',
+            options: ['Team X', 'Team Y', 'Team Z']
+          }
         }, {
           displayName: 'Away Team',
           field: 'teamAway'

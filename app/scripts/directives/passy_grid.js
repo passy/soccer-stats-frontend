@@ -15,12 +15,11 @@
           });
 
           scope.columns = options.columnDefs.map(function (x) {
-            return x.field;
+            return {
+              field: x.field,
+              editOptions: x.editOptions
+            };
           });
-
-          scope.dataClick = function (element) {
-            console.log("Clicked", element);
-          };
 
           scope.$watch(options.data, function (data) {
             scope.data = data;
@@ -31,14 +30,19 @@
 
   .directive('passyEditable', function () {
     return {
-      restrict: 'A',
+      restrict: 'E',
       templateUrl: 'views/_passy_editable.html',
       replace: true,
       scope: {
-        'content': '=passyEditable'
+        'content': '=content',
+        'options': '=options'
       },
       link: function (scope) {
         scope.editMode = false;
+
+        scope.$watch('content', function (value) {
+          console.log("Content changed!", value);
+        }, true);
       }
     };
   });
