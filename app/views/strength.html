@@ -6,9 +6,17 @@
     before.
   </p>
 
-  <div class="progress progress-striped active" ng-show="loading">
-    <div class="bar" style="width: 100%"></div>
-  </div>
+  <section ng-show="!loading">
+    <div class="progress progress-striped active">
+      <div class="bar" style="width: 100%"></div>
+    </div>
+    <p class="text-center">
+      Enjoy this bunny while you're waiting.<br>
+
+      <img src="images/loadingbunny.jpg" alt="A cute bunny holding a little
+      soccer ball under its paw." width="414" height="414">
+    </p>
+  </section>
 
   <section ng-show="loaded">
     <h3>Team Ranking</h3>
