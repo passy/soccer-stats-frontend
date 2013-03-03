@@ -19,6 +19,10 @@
         templateUrl: 'views/strength.html',
         controller: 'StrengthCtrl'
       })
+      .when('/predict', {
+        templateUrl: 'views/predict.html',
+        controller: 'PredictCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
