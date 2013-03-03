@@ -2,13 +2,8 @@
   'use strict';
 
   angular.module('soccerApp')
-    .controller('ResultsCtrl', function ($scope) {
-      $scope.results = [{
-        teamHome: 'BVB',
-        teamAway: 'HSV',
-        goalsHome: 3,
-        goalsAway: 5
-      }];
+    .controller('ResultsCtrl', function ($scope, appStorage) {
+      $scope.results = appStorage.getResults();
 
       // Very expensive and unnecessary. Should be lazily generated.
       $scope.$watch('results', function (value) {
@@ -33,11 +28,15 @@
           field: 'teamHome',
           editOptions: {
             type: 'select',
-            options: ['Team X', 'Team Y', 'Team Z']
+            options: appStorage.getTeams()
           }
         }, {
           displayName: 'Away Team',
-          field: 'teamAway'
+          field: 'teamAway',
+          editOptions: {
+            type: 'select',
+            options: appStorage.getTeams()
+          }
         }, {
           displayName: 'Score',
           field: 'goalsFormatted'
