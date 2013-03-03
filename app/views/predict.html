@@ -7,4 +7,24 @@
     You need to calculate scores first. Go to <a href="#/strength">Strength</a>
     to do so.
   </section>
+
+  <section ng-show="scores">
+    <h3>Select Teams</h3>
+    <select ng-model="teamA">
+      <option ng-repeat="(team, score) in scores">{{ team }}</option>
+    </select>
+    vs
+    <select ng-model="teamB">
+      <option ng-repeat="(team, score) in scores">{{ team }}</option>
+    </select>
+  </section>
+
+  <section ng-show="result" class="well">
+    <p>
+      <strong>{{ winner }}</strong> is going to win with an advance of
+      <strong>{{ resultDiff }}</strong> goals.
+    </p>
+
+    <small>Exact result: {{ result }}</small>
+  </section>
 </div>
