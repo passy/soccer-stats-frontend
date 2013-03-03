@@ -7,8 +7,9 @@
   <tbody>
     <tr ng-repeat="row in data">
       <td ng-repeat="column in columns" ng-click="dataClick(row, column)">
-        <passy-editable content="row[column.field]"
-        options="column.editOptions"></passy-editable>
+        <passy-editable ng-if="editable" content="row[column.field]"
+          options="column.editOptions"></passy-editable>
+        <span ng-if="!editable">{{ row[column.field] }}
       </td>
     </tr>
   </tbody>

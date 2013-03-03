@@ -16,6 +16,7 @@
 
       $scope.gridOptions = {
         data: 'results',
+        editable: true,
         columnDefs: [{
           displayName: 'Home Team',
           field: 'teamHome',

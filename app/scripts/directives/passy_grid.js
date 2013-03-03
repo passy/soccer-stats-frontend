@@ -9,6 +9,7 @@
         scope: true,
         link: function postLink(scope, element, attrs) {
           var options = scope.$eval(attrs.passyGrid);
+          scope.editable = !!options.editable;
 
           scope.headers = options.columnDefs.map(function (x) {
             return x.displayName;
@@ -22,7 +23,9 @@
           });
 
           scope.$watch(options.data, function (data) {
-            scope.data = data;
+            if (data !== undefined) {
+              scope.data = data;
+            }
           });
         }
       };
