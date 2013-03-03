@@ -18,10 +18,28 @@
             return x.field;
           });
 
+          scope.dataClick = function (element) {
+            console.log("Clicked", element);
+          };
+
           scope.$watch(options.data, function (data) {
             scope.data = data;
           });
         }
       };
-    });
+    })
+
+  .directive('passyEditable', function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'views/_passy_editable.html',
+      replace: true,
+      scope: {
+        'content': '=passyEditable'
+      },
+      link: function (scope) {
+        scope.editMode = false;
+      }
+    };
+  });
 }());

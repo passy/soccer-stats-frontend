@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered passy-grid">
   <thead>
     <tr>
       <th ng-repeat="header in headers">{{ header }}</th>
@@ -6,7 +6,9 @@
   </thead>
   <tbody>
     <tr ng-repeat="row in data">
-      <td ng-repeat="column in columns">{{ row[column] }}</td>
+      <td ng-repeat="column in columns" ng-click="dataClick(row, column)">
+        <div passy-editable="row[column]"></div>
+      </td>
     </tr>
   </tbody>
 </table>
