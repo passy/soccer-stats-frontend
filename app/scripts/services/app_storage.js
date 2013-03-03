@@ -2,18 +2,37 @@
 (function () {
   'use strict';
 
+  var LOCALESTORAGE_KEY = 'soccerapp',
+    DATA_REVISION = 1;
+
   angular.module('soccerApp')
     .factory('appStorage', function () {
-      var store = {
-        teams: ['BVB', 'Bayern München', 'HSV'],
-        results: [{
-          teamHome: 'BVB',
-          teamAway: 'HSV',
-          goalsHome: 2,
-          goalsAway: 1
-        }],
-        scores: {}
-      };
+      var loadedData = localStorage.getItem(LOCALESTORAGE_KEY),
+        save = function () {
+          localStorage.setItem(LOCALESTORAGE_KEY, JSON.stringify(store));
+        },
+        defaultData = {
+          teams: ['BVB', 'Bayern München', 'HSV'],
+          results: [{
+            teamHome: 'BVB',
+            teamAway: 'HSV',
+            goalsHome: 2,
+            goalsAway: 1
+          }],
+          scores: {},
+          revision: DATA_REVISION
+        },
+        store;
+
+      if (loadedData) {
+        store = JSON.parse(loadedData);
+        if (store.revision < DATA_REVISION) {
+          console.log('Dropping obsolete local storage data.');
+          store = null;
+        }
+      }
+
+      store = store || defaultData;
 
       return {
         getTeams: function () {
@@ -22,6 +41,7 @@
 
         setTeams: function (teams) {
           store.teams = teams;
+          save();
         },
 
         getResults: function () {
@@ -30,6 +50,7 @@
 
         setResults: function (results) {
           store.results = results;
+          save();
         },
 
         getScores: function () {
@@ -38,12 +59,19 @@
 
         setScores: function (scores) {
           store.scores = scores;
+          save();
         },
 
         setErrors: function (errors) {
           angular.forEach(errors, function (value, i) {
             store.results[i].error = value;
           });
+          save();
+        },
+
+        clear: function () {
+          store = defaultData;
+          save();
         },
 
         toJSON: function () {

@@ -11,20 +11,20 @@
   </div>
 
   <section ng-show="loaded">
-    <h2>Team Ranking</h2>
+    <h3>Team Ranking</h3>
     <ol>
       <li ng-repeat="(team, score) in data.scores">
         <strong>{{ team }}</strong> ({{ score }})
       </li>
     </ol>
 
-    <h2>Relative Errors</h2>
+    <h3>Relative Errors</h3>
     <div ng-hide="loading" passy-grid="gridOptions"></div>
   </section>
 
   <p>
-    <button ng-click="calculate()" ng-disabled="loading" ng-class="{}"
-      class="btn btn-primary">Refresh</button>
+    <button ng-click="calculate()" ng-disabled="loading"
+      class="btn" ng-class="{'btn-primary': !loaded}">Refresh</button>
   </p>
 
 </div>
