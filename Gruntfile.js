@@ -182,6 +182,12 @@ module.exports = function (grunt) {
             '.htaccess',
             'components/**/*'
           ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: 'heroku/',
+          dest: '<%= yeoman.dist %>',
+          src: '*'
         }]
       }
     }
