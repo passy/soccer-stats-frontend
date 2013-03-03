@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('soccerApp', [])
+  angular.module('soccerApp', ['ngResource'])
     .config(function ($routeProvider) {
       $routeProvider.when('/', {
         templateUrl: 'views/main.html',
@@ -14,6 +14,10 @@
       .when('/results', {
         templateUrl: 'views/results.html',
         controller: 'ResultsCtrl'
+      })
+      .when('/strength', {
+        templateUrl: 'views/strength.html',
+        controller: 'StrengthCtrl'
       })
       .otherwise({
         redirectTo: '/'
