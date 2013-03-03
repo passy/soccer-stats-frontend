@@ -3,12 +3,12 @@
   <form class="form-inline" ng-submit="editMode = false" ng-show="editMode">
     <ng-switch on="options.type">
       <div ng-switch-when="select">
-        <select ng-model="content">
+        <select ng-model="$parent.content">
           <option value="{{ option }}" ng-repeat="option in options.options">{{ option }}</option>
         </select>
         <button class="btn btn-success" ng-click="editMode = false">✓</button>
       </div>
-      <input ng-switch-default type="text" ng-model="content">
+      <input ng-switch-default type="text" ng-model="$parent.content">
     </ng-switch>
   </form>
 </div>
