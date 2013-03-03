@@ -40,6 +40,12 @@
           store.scores = scores;
         },
 
+        setErrors: function (errors) {
+          angular.forEach(errors, function (value, i) {
+            store.results[i].error = value;
+          });
+        },
+
         toJSON: function () {
           return store;
         }
@@ -47,24 +53,37 @@
     })
 
     .factory('scoreResource', function ($resource) {
-      return $resource('http://:host:port/v1/score', {
-        host: SA_CONFIG.apiHost,
-        port: ':' + SA_CONFIG.apiPort
+      return $resource('https://:host/v1/score', {
+        host: SA_CONFIG.apiHost
+      }, {
+        get: {method: 'post'}
       });
     })
 
     // I really suck at naming things.
     // This populates the `appStorage` with calculations from
     // the server.
-    .factory('remoteScoreCalculator', function (appStorage, scoreResource) {
-      var onResponse = function (response) {
-        console.log('Response: ', response);
+    .factory('remoteScoreCalculator', function ($q, appStorage, scoreResource) {
+      var onResponse = function (deferred) {
+        return function (response) {
+          appStorage.setScores(response.scores);
+          appStorage.setErrors(response.errors);
 
+          deferred.resolve(response);
+        };
+      }, onError = function (deferred) {
+        return function (err) {
+          deferred.reject(err);
+        };
       };
 
       return {
         update: function () {
-          scoreResource.get({results: appStorage.getResults()}, onResponse);
+          var deferred = $q.defer();
+          scoreResource.get({results: appStorage.getResults()},
+                             onResponse(deferred), onError(deferred));
+
+          return deferred.promise;
         }
       };
     });
