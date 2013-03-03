@@ -25,31 +25,33 @@
     <![endif]-->
 
     <div id="wrap">
-    <header role="banner" class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a href="/" class="brand">⚽ Soccer Predictor</a>
-          <nav role="navigation">
-            <ul class="nav">
-              <passy-menu href="/">Start</passy-menu>
-              <passy-menu href="/teams">Teams</passy-menu>
-              <passy-menu href="/results">Results</passy-menu>
-              <passy-menu href="/strength">Strength</passy-menu>
-              <passy-menu href="/predict">Predict</passy-menu>
-              <li class="dim"><a soccer-reset href="#">Reset</a></li>
-            </ul>
-          </nav>
+      <header role="banner" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a href="/" class="brand">⚽ Soccer Predictor</a>
+            <nav role="navigation">
+              <ul class="nav">
+                <passy-menu href="/">Start</passy-menu>
+                <passy-menu href="/teams">Teams</passy-menu>
+                <passy-menu href="/results">Results</passy-menu>
+                <passy-menu href="/strength">Strength</passy-menu>
+                <passy-menu href="/predict">Predict</passy-menu>
+                <li class="dim"><a soccer-reset href="#">Reset</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
+      </header>
+
+      <div class="container" role="main" ng-view>
+        Loading …
       </div>
-    </header>
-
-    <div class="container" role="main" ng-view>
-      Loading …
-    </div>
     </div>
 
-    <footer id="footer">
-      Built by <a href="https://github.com/passy">@passy</a>.
+    <footer id="footer" role="contentinfo">
+      <div class="container">
+        Built by <a href="https://github.com/passy">@passy</a>.
+      </div>
     </footer>
 
     <script src="components/jquery/jquery.js"></script>
