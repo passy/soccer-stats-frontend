@@ -6,7 +6,8 @@
         <option value="{{ option }}" ng-selected="$parent.content == option"
           ng-repeat="option in options.options">{{ option }}</option>
       </select>
-      <input ng-switch-default type="text" ng-model="$parent.content">
+      <input ng-switch-default type="text" ng-model="$parent.content"
+        passy-select="editMode">
     </ng-switch>
     <button class="btn btn-success" ng-click="editMode = false">✓</button>
   </form>

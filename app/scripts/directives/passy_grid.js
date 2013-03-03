@@ -31,6 +31,20 @@
       };
     })
 
+  // Select an element (mostly inputs) if the expression evaluates to true.
+  .directive('passySelect', function () {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attrs) {
+        scope.$watch(attrs.passySelect, function (val) {
+          if (val) {
+            element.select();
+          }
+        });
+      }
+    };
+  })
+
   .directive('passyEditable', function () {
     return {
       restrict: 'E',
@@ -42,10 +56,6 @@
       },
       link: function (scope) {
         scope.editMode = false;
-
-        scope.$watch('content', function (value) {
-          console.log("Content changed!", value);
-        }, true);
       }
     };
   });
