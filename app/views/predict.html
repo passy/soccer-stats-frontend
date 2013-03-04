@@ -20,12 +20,16 @@
   </section>
 
   <section ng-show="result" class="well">
-    <p>
-      <strong>{{ winner }}</strong> is going to win with a margin of
+    <p ng-if="resultDiff > 0">
+      <strong>{{ winner }}</strong> is going to win by a margin of
       <strong>{{ resultDiff }}</strong>
-      <ng-pluralize count="resultDiff" when="{one: 'goal', 'other': 'goals'}">.
+      <ng-pluralize count="resultDiff" when="{one: 'goal', other: 'goals'}">.
     </p>
 
+    <p ng-if="resultDiff == 0">
+      There is going to be <strong>a draw</strong> between
+      <strong>{{ teamA }}</strong> and <strong>{{ teamB }}</strong>.
+    </p>
     <small>Exact result: {{ result }}</small>
   </section>
 </div>
