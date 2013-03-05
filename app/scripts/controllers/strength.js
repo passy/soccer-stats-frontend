@@ -4,7 +4,7 @@
   angular.module('soccerApp')
     .controller('StrengthCtrl', function ($scope, remoteScoreCalculator, appStorage) {
       $scope.data = {
-        scores: appStorage.getScores(),
+        scores: appStorage.getScoresSorted(),
         results: appStorage.getResults()
       };
 
@@ -16,7 +16,7 @@
       });
 
       $scope.$watch('data.scores', function () {
-        $scope.loaded = Object.keys($scope.data.scores).length > 0;
+        $scope.loaded = $scope.data.scores.length > 0;
       });
 
       $scope.gridOptions = {
@@ -44,7 +44,7 @@
           $scope.loading = false;
 
           $scope.data = {
-            scores: appStorage.getScores(),
+            scores: appStorage.getScoresSorted(),
             results: appStorage.getResults()
           };
 

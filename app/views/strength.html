@@ -21,8 +21,8 @@
   <section ng-show="loaded">
     <h3>Team Ranking</h3>
     <ol>
-      <li ng-repeat="(team, score) in data.scores">
-        <strong>{{ team }}</strong> ({{ score }})
+      <li ng-repeat="score in data.scores">
+        <strong>{{ score[0] }}</strong> ({{ score[1] }})
       </li>
     </ol>
 

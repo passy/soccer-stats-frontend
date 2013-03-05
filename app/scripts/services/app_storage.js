@@ -1,4 +1,4 @@
-/*global SA_CONFIG */
+/*global SA_CONFIG, _ */
 (function () {
   'use strict';
 
@@ -55,6 +55,10 @@
 
         getScores: function () {
           return store.scores;
+        },
+
+        getScoresSorted: function () {
+          return _.pairs(store.scores).sort(function (a, b) { return b[1] - a[1]; });
         },
 
         setScores: function (scores) {
